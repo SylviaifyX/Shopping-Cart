@@ -1,4 +1,5 @@
 // import pic from "../assets/image-baklava-desktop.jpg";
+import { useCartStore } from "../store/UseCartStore";
 import { formatCurrency } from "../utilities/formatCurrency";
 
 export type ProductCardProps = {
@@ -7,14 +8,26 @@ export type ProductCardProps = {
     category: string;
     image: string;
     price: number;
+    quantity: number
 };
 const ProductCard = ({
+    id,
     name,
     image,
     price,
     category,
 }: ProductCardProps) => {
-    const quantity = 0;
+    const {addToCart} = useCartStore ((state) => state.actions);
+    const cart = useCartStore((state) => state.cart)
+    const quantity = cart[id]?.quantity || 0;
+
+    const handleAddToCart = () => {
+        addToCart({
+            id, name, price, quantity: quantity + 1,
+            category: "",
+            image: ""
+        });
+    };
     return (
         <section className="mt-5">
             <div className="mb-3 relative">
@@ -24,8 +37,8 @@ const ProductCard = ({
                     className="object-cover rounded-2xl  overflow-hidden"
                 />
                 <div className="absolute inset-0  h-10  top-52  flex justify-center items-center">
-                    <div className="">{quantity === 0 ?
-                        <button className="w-44 bg-slate-50 p-2 rounded-full border
+                    <div className="">{ quantity === 0?
+                        <button onClick={handleAddToCart} className="w-44 bg-slate-50 p-2 rounded-full border
                          border-Rose500 flex items-center justify-center gap-2 hover:border-Red hover:border-2">
                             <span>
                                 <img src='/icon-add-to-cart.svg' alt="cart-icon" />

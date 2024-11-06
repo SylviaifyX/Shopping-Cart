@@ -2,15 +2,6 @@ const CartTable = () => {
     return (
         <div className="w-full">
             <table >
-                {/* <thead>
-      <tr>
-        <th>Product Image</th>
-        <th>Color</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-      </tr>
-                </thead> */}
                 <tbody>
                     {/* Row with full-width red background */}
                     <tr className="">
