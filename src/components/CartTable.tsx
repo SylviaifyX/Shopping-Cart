@@ -10,7 +10,7 @@ const CartTable = () => {
         <th>Price</th>
         <th>Total</th>
       </tr>
-            </thead> */}
+                </thead> */}
                 <tbody>
                     {/* Row with full-width red background */}
                     <tr className="">
@@ -80,6 +80,19 @@ const CartTable = () => {
                 </tbody>
                 <hr className="w-ful h-0.5 text-Rose100 mt-2" />
             </table>
+            <div className="flex items-center justify-between mt-10 font-RedHatText">
+                <p className="text-base text-Rose500 font-semibold">Order Total</p>
+                <h1 className="text-2xl text-Rose900 font-bold">$46.60</h1>
+            </div>
+            <div className="mt-10 ">
+                <div className="flex items-center justify-center bg-Rose100 p-3 mb-9 rounded-md ">
+                    <img src="/icon-carbon-neutral.svg" alt="neturalicon"  className="mr-2 w-5 h-5"/>
+                    <p className="text-base font-RedHatText text-Rose900 font-normal ">This is a <span className="text-Rose900 font-bold">carbon neutral</span> delivery</p>
+                </div>
+                <button className="bg-Red w-full rounded-full p-3 text-white font-RedHatText font-semi-bold">
+                    Process to Payment
+                </button>
+            </div>
         </div>
     );
 };
