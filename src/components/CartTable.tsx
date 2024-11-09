@@ -1,16 +1,17 @@
-import { useCartStore } from "../store/UseCartStore";  
+import { useCartStore } from "../store/UseCartStore";
 import { formatCurrency } from "../utilities/formatCurrency";
 
+
+
+
 const CartTable = () => {
-    const { cart } = useCartStore(state => state);  
-    // const handleRemoveItem = (id: string) => {
-    //     actions.removeFromCart(id);  //
-    // };
+    const cart = useCartStore((state) => state.cart);
+    const { subTotalCalculation, removeFromCart } = useCartStore((state) => state.actions)
+    const subtotal = subTotalCalculation()
 
-    // const calculateTotal = () => {
-    //     return Object.values(cart).reduce((total, item) => total + item.price * item.quantity, 0);
-    // };
-
+    const handleRemoveItem = (id: string) => {
+        removeFromCart(id)
+    }
     return (
         <div className="w-full">
             <table>
@@ -34,7 +35,7 @@ const CartTable = () => {
                                         src="/icon-remove-item.svg"
                                         alt="remove-icon"
                                         className="w-5 h-5 cursor-pointer rounded-full border border-Rose500 p-1 ml-4"
-                                        // onClick={() => handleRemoveItem(id)}
+                                        onClick={() => handleRemoveItem(id)}
                                     />
                                 </td>
                             </tr>
@@ -45,7 +46,7 @@ const CartTable = () => {
             <hr className="w-full h-0.5 text-Rose100 mt-2" />
             <div className="flex items-center justify-between mt-10 font-RedHatText">
                 <p className="text-base text-Rose500 font-semibold">Order Total</p>
-                {/* <h1 className="text-2xl text-Rose900 font-bold">${calculateTotal().toFixed(2)}</h1> */}
+                <h1 className="text-2xl text-Rose900 font-bold"> {formatCurrency(subtotal)}</h1>
             </div>
             <div className="mt-10">
                 <div className="flex items-center justify-center bg-Rose100 p-3 mb-9 rounded-md">

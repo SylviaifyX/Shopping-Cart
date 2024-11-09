@@ -3,12 +3,13 @@ import { useCartStore } from "../store/UseCartStore";
 import { formatCurrency } from "../utilities/formatCurrency";
 
 export type ProductCardProps = {
-    id: number;
+    id: string;
     name: string;
     category: string;
     image: string;
     price: number;
     quantity: number
+    subtotal: number
 };
 const ProductCard = ({
     id,
@@ -17,14 +18,33 @@ const ProductCard = ({
     price,
     category,
 }: ProductCardProps) => {
-    const {addToCart} = useCartStore ((state) => state.actions);
+    const { addToCart, updateCart} = useCartStore((state) => state.actions);
     const cart = useCartStore((state) => state.cart)
     const quantity = cart[id]?.quantity || 0;
 
     const handleAddToCart = () => {
-        addToCart({
-            id, name, price, quantity: quantity + 1, category, image
-        });
+        if (quantity === 0) {
+            addToCart({
+                id,
+                name,
+                price,
+                quantity: 1, 
+                category,
+                image,
+                subtotal: price, 
+            });
+        } else {
+            updateCart(id, 1);
+        }
+    };
+    const handleIncrement = () => {
+        updateCart(id, 1);
+    };
+
+    const handleDecrement = () => {
+        if (quantity > 1) {
+            updateCart(id, -1);
+        }
     };
     return (
         <section className="mt-5">
@@ -35,7 +55,7 @@ const ProductCard = ({
                     className="object-cover rounded-2xl  overflow-hidden"
                 />
                 <div className="absolute inset-0  h-10  top-52  flex justify-center items-center">
-                    <div className="">{ quantity === 0?
+                    <div className="">{quantity === 0 ?
                         <button onClick={handleAddToCart} className="w-44 bg-slate-50 p-2 rounded-full border
                          border-Rose500 flex items-center justify-center gap-2 hover:border-Red hover:border-2">
                             <span>
@@ -46,11 +66,11 @@ const ProductCard = ({
                         :
                         <button className="w-44 bg-Red p-2 rounded-full border border-Rose500 ">
                             <div className="w-32 mx-auto flex items-center justify-between gap-2">
-                                <div className="w-5 h-5 rounded-full border border-white flex items-center justify-center">
-                                    <img src='/icon-decrement-quantity.svg' className="block object-cover" alt="" />
+                                <div className="w-5 h-5 rounded-full border border-white flex items-center justify-center" onClick={handleDecrement}>
+                                    <img src='/icon-decrement-quantity.svg' className="block object-cover" alt=""  />
                                 </div>
                                 <span className="text-white">1</span>
-                                <span className="w-5 h-5 rounded-full border border-white flex items-center justify-center">
+                                <span className="w-5 h-5 rounded-full border border-white flex items-center justify-center" onClick={handleIncrement}>
                                     <img src='/icon-increment-quantity.svg' alt="dec-icon" />
                                 </span>
                             </div>
