@@ -23,9 +23,7 @@ const ProductCard = ({
 
     const handleAddToCart = () => {
         addToCart({
-            id, name, price, quantity: quantity + 1,
-            category: "",
-            image: ""
+            id, name, price, quantity: quantity + 1, category, image
         });
     };
     return (
