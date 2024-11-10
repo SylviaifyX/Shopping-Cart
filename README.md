@@ -24,7 +24,7 @@ Users should be able to:
 
 
 ### Links
-- Live Site URL: [Add live site URL here](https://shopping-cart-ceountbzj-sylviaifyxs-projects.vercel.app/)
+- Live Site URL: [Add live site URL here](https://shopping-cart-six-weld.vercel.app/)
 
 ## My process
 
