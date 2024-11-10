@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 const ProductSection = () =>{
     useEffect(() =>{
-        Aos.init({duration:900, offset:100, once: true, anchorPlacement: "top-bottom"  });
+        Aos.init({duration:1000, offset:200, once: true, anchorPlacement: "top-bottom"  });
     },[])  
     return(
         <section className="gird items-center">
