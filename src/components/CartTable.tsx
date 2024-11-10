@@ -15,11 +15,11 @@ const CartTable = () => {
     return (
         <div className="w-full">
             <table>
-                <tbody>
+                <tbody className="flex flex-col gap-3">
                     {Object.keys(cart).map((id) => {
                         const { name, image, price, quantity } = cart[id];
                         return (
-                            <tr key={id} className="font-RedHatText">
+                            <tr key={id} className="font-RedHatText border-b border-Rose100">
                                 <td className="w-1/6 overflow-hidden">
                                     <img
                                         src={image}
@@ -43,7 +43,7 @@ const CartTable = () => {
                     })}
                 </tbody>
             </table>
-            <hr className="w-full h-0.5 text-Rose100 mt-2" />
+           
             <div className="flex items-center justify-between mt-10 font-RedHatText">
                 <p className="text-base text-Rose500 font-semibold">Order Total</p>
                 <h1 className="text-2xl text-Rose900 font-bold"> {formatCurrency(subtotal)}</h1>

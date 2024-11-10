@@ -69,7 +69,7 @@ const ProductCard = ({
                                 <div className="w-5 h-5 rounded-full border border-white flex items-center justify-center" onClick={handleDecrement}>
                                     <img src='/icon-decrement-quantity.svg' className="block object-cover" alt=""  />
                                 </div>
-                                <span className="text-white">1</span>
+                                <span className="text-white">{quantity}</span>
                                 <span className="w-5 h-5 rounded-full border border-white flex items-center justify-center" onClick={handleIncrement}>
                                     <img src='/icon-increment-quantity.svg' alt="dec-icon" />
                                 </span>
