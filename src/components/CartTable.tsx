@@ -28,7 +28,7 @@ const CartTable = () => {
                                     />
                                 </td>
                                 <td className="text-Red font-bold text-base w-1/4 text-center p-2">{quantity}x</td>
-                                <td className="text-Rose400 font-medium w-1/4 text-center p-2">@ {formatCurrency(price)}</td>
+                                <td className="text-Rose400 font-medium w-1/4 text-center">@ {formatCurrency(price)}</td>
                                 <td className="text-Rose500 font-semibold w-1/4 text-center p-2">{formatCurrency(price * quantity)}</td>
                                 <td className="w-1/6 text-center p-2">
                                     <img
