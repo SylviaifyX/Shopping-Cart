@@ -8,35 +8,30 @@
   - [Author](#author)
 
 ## Overview
-This a functional Product  Cart wherby User can be able to add their prefered choice of Item. 
+This is a functional product cart application where users can browse products, add items to their cart, adjust quantities, and proceed with an order confirmation. The app ensures a responsive and user-friendly experience, adapting to different device screen sizes.
 
-### The challenge
-Users should be able to:
-- Add items to the cart and remove them
-- Increase/decrease the number of items in the cart
-- See an order confirmation modal when they click "Confirm Order"
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+### Features
+Users can:
+- Add and remove items from the cart.
+- Adjust item quantities directly in the cart.
+- View the total price based on selected items and quantities.
+- Experience a confirmation modal when clicking "Confirm Order."
+- View an optimal layout on any device size with responsive design.
+- See hover and focus states for all interactive elements, enhancing accessibility.
 
 ### Screenshot
 ![](/public/active-states.jpg)
 
-
 ### Links
 - Live Site URL: [Add live site URL here](https://shopping-cart-six-weld.vercel.app/)
 
-## My process
-
 ### Built with
-- [React](https://reactjs.org/) - JS library
-- [Tailwincss Components](https://tailwindcss.com/)) - For styles
-- Zustand 
+- React - For UI Components
+- Tailwind CSS - For efficient, responsive styling
+- Zustand - Lightweight state management for React
 
-
-
-
+  
 ## Author
-
 - Name - Ifeoma Okpara Anumege
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
 - Twitter - [@yourusername](https://www.twitter.com/yourusername)
