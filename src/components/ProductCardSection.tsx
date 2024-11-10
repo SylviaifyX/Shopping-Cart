@@ -8,8 +8,8 @@ export type ProductCardProps = {
     category: string;
     image: string;
     price: number;
-    quantity: number
-    subtotal: number
+    quantity: number;
+    subtotal: number;
 };
 const ProductCard = ({
     id,
@@ -17,6 +17,7 @@ const ProductCard = ({
     image,
     price,
     category,
+    
 }: ProductCardProps) => {
     const { addToCart, updateCart} = useCartStore((state) => state.actions);
     const cart = useCartStore((state) => state.cart)
@@ -52,11 +53,11 @@ const ProductCard = ({
                 <img
                     src={image}
                     alt="testing"
-                    className="object-cover rounded-2xl  overflow-hidden"
+                    className="object-cover rounded-2xl  w-full overflow-hidden"
                 />
-                <div className="absolute inset-0  h-10  top-52  flex justify-center items-center">
-                    <div className="">{quantity === 0 ?
-                        <button onClick={handleAddToCart} className="w-44 bg-slate-50 p-2 rounded-full border
+                <div className="absolute -bottom-5 w-full h-10 flex justify-center items-center">
+                    <div className="w-full flex items-center justify-center">{quantity === 0 ?
+                        <button onClick={handleAddToCart} className="lg:w-44 w-full bg-slate-50  p-[10px] rounded-full border
                          border-Rose500 flex items-center justify-center gap-2 hover:border-Red hover:border-2">
                             <span>
                                 <img src='/icon-add-to-cart.svg' alt="cart-icon" />
@@ -64,7 +65,7 @@ const ProductCard = ({
                             <span className="text-base font-RedHatText font-bold">Add to cart </span>
                         </button>
                         :
-                        <button className="w-44 bg-Red p-2 rounded-full border border-Rose500 ">
+                        <button className="lg:w-44 w-full bg-Red  rounded-full border p-[10px] border-Rose500 ">
                             <div className="w-32 mx-auto flex items-center justify-between gap-2">
                                 <div className="w-5 h-5 rounded-full border border-white flex items-center justify-center" onClick={handleDecrement}>
                                     <img src='/icon-decrement-quantity.svg' className="block object-cover" alt=""  />

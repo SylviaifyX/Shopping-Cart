@@ -5,7 +5,7 @@ interface MainWrapperProps{
 }
 const MainWrapper = ({ children } : MainWrapperProps) => {
     return (
-        <div className="px-10 mx-auto container my-10 ">
+        <div className="px-5 md:px-10 lg:px-10 mx-auto container my-10 ">
             {children}
         </div>
     )
