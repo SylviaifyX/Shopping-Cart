@@ -13,9 +13,9 @@ const CartTable = () => {
         removeFromCart(id)
     }
     return (
-        <div className="w-full">
-            <table>
-                <tbody className="flex flex-col gap-3">
+        <div className="w-full p-3">
+            <table className="">
+                <tbody className="flex flex-col gap-5">
                     {Object.keys(cart).map((id) => {
                         const { name, image, price, quantity } = cart[id];
                         return (

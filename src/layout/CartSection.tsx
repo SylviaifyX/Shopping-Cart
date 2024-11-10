@@ -4,7 +4,7 @@ import { useCartStore } from "../store/UseCartStore";
 const CartSection = () => {
   const numberOfItemsInStore = useCartStore(state => state.numberOfItemsInStore)
   return (
-    <section className=" md:ml-2 lg:ml-7 bg-white rounded-xl md:p-4 mt-10 md:mt-0">
+    <section className=" md:ml-2 lg:ml-7 bg-white rounded-xl md:p-4 mt-10 lg:mt-0">
       <div className="p-2 flex items-center gap-1">
         <h1 className="text-xl font-RedHatText text-red-700 font-bold">Your Cart</h1>
         <span className="text-xl  text-red-700 font-bold ">({numberOfItemsInStore})</span>
