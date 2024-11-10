@@ -48,17 +48,18 @@ const ProductCard = ({
         }
     };
     return (
-        <section className="mt-5">
+        <section className="mt-5 " data-aos="fade-up">
             <div className="mb-3 relative">
                 <img
                     src={image}
                     alt="testing"
                     className="object-cover rounded-2xl  w-full overflow-hidden"
+                    data-aos ="fade-in"
                 />
                 <div className="absolute -bottom-5 w-full h-10 flex justify-center items-center">
                     <div className="w-full flex items-center justify-center">{quantity === 0 ?
                         <button onClick={handleAddToCart} className="lg:w-44 w-full bg-slate-50  p-[10px] rounded-full border
-                         border-Rose500 flex items-center justify-center gap-2 hover:border-Red hover:border-2">
+                         border-Rose500 flex items-center justify-center gap-2 hover:border-Red hover:border-2" data-aos="flip-left">
                             <span>
                                 <img src='/icon-add-to-cart.svg' alt="cart-icon" />
                             </span>
@@ -80,7 +81,7 @@ const ProductCard = ({
                     </div>
                 </div>
             </div>
-            <div className=" mt-8 flex flex-col gap-2">
+            <div className=" mt-8 flex flex-col gap-2" data-aos="fade-left">
                 <p className="text-sm font-RedHatText text-Rose500 font-medium ">
                     {category}
                 </p>
