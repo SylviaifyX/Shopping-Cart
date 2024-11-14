@@ -1,9 +1,13 @@
 import { useCartStore } from "../store/UseCartStore";
 import { formatCurrency } from "../utilities/formatCurrency";
+import PaystackPop from "@paystack/inline-js"
 
-
-
-
+export type PaystackProp = {
+    key: string,
+    amount: number,
+    onSuccess?: (transaction: { reference: string }) => void,
+    onCancel?: () => void,
+}
 const CartTable = () => {
     const cart = useCartStore((state) => state.cart);
     const { subTotalCalculation, removeFromCart } = useCartStore((state) => state.actions)
@@ -12,6 +16,23 @@ const CartTable = () => {
     const handleRemoveItem = (id: string) => {
         removeFromCart(id)
     }
+
+    const paywithpaystack = (e: React.FormEvent) => {
+        e.preventDefault();
+        const paystack = new PaystackPop();
+        paystack.newTransaction({
+            key: "pk_test_53f92e45d000087eb0939faab47372a3f70d1ef8",
+            amount: subtotal * 100,
+            onSuccess: (transaction) => {
+                alert(`Payment complete! Reference: ${transaction.reference}`);
+            },
+            onCancel: () => {
+                alert("Payment was cancelled.");
+            },
+            email: "testing@gmail.com"
+        });
+    };
+
     return (
         <div className="w-full p-3">
             <table className="">
@@ -43,7 +64,7 @@ const CartTable = () => {
                     })}
                 </tbody>
             </table>
-           
+
             <div className="flex items-center justify-between mt-10 font-RedHatText">
                 <p className="text-base text-Rose500 font-semibold">Order Total</p>
                 <h1 className="text-2xl text-Rose900 font-bold"> {formatCurrency(subtotal)}</h1>
@@ -53,7 +74,7 @@ const CartTable = () => {
                     <img src="/icon-carbon-neutral.svg" alt="neutral-icon" className="mr-2 w-5 h-5" />
                     <p className="text-base font-RedHatText text-Rose900 font-normal">This is a <span className="text-Rose900 font-bold">carbon neutral</span> delivery</p>
                 </div>
-                <button className="bg-Red w-full rounded-full p-3 text-white font-RedHatText font-semi-bold">
+                <button className="bg-Red w-full rounded-full p-3 text-white font-RedHatText font-semi-bold" onClick={paywithpaystack}>
                     Process to Payment
                 </button>
             </div>
