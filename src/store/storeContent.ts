@@ -9,5 +9,6 @@ export interface CartStore{
         updateCart:(id:string, change: -1 |1) => void
         subTotalCalculation: () => number
         removeFromCart: (id:string) => void
+        clearCart: () => void
     }
 }

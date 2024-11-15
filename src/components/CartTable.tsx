@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useCartStore } from "../store/UseCartStore";
 import { formatCurrency } from "../utilities/formatCurrency";
 import PaystackPop from "@paystack/inline-js"
@@ -9,12 +10,18 @@ export type PaystackProp = {
     onCancel?: () => void,
 }
 const CartTable = () => {
+    const [paymentStatus, setPaymentStatus] = useState<string | null>(null)
     const cart = useCartStore((state) => state.cart);
-    const { subTotalCalculation, removeFromCart } = useCartStore((state) => state.actions)
+    const { subTotalCalculation, removeFromCart, clearCart } = useCartStore((state) => state.actions)
     const subtotal = subTotalCalculation()
 
     const handleRemoveItem = (id: string) => {
         removeFromCart(id)
+    }
+
+    const reset = () =>{
+        clearCart()
+        setPaymentStatus(null)
     }
 
     const paywithpaystack = (e: React.FormEvent) => {
@@ -24,10 +31,10 @@ const CartTable = () => {
             key: "pk_test_53f92e45d000087eb0939faab47372a3f70d1ef8",
             amount: subtotal * 100,
             onSuccess: (transaction) => {
-                alert(`Payment complete! Reference: ${transaction.reference}`);
+                setPaymentStatus(`Payment complete! Reference: ${transaction.reference}`);
             },
             onCancel: () => {
-                alert("Payment was cancelled.");
+                setPaymentStatus("Payment was cancelled.");
             },
             email: "testing@gmail.com"
         });
@@ -78,6 +85,15 @@ const CartTable = () => {
                     Process to Payment
                 </button>
             </div>
+
+             {paymentStatus && (
+                <div className="mt-8 p-4 border border-gray-300 rounded-lg bg-gray-100 text-center">
+                    <p className="text-lg font-semibold text-Rose900">{paymentStatus}</p>
+                    <button className="mt-3 bg-Blue-500 text-white bg-Red p-2 rounded-md" onClick={reset}>
+                        Start New Order
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

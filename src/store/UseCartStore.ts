@@ -39,7 +39,11 @@ export const useInitCart = create<CartStore>()((set, get) => ({
             const newCart = structuredClone(cart)
             delete newCart[id];
             set({cart: newCart, numberOfItemsInStore: numberOfItemsInStore -1})
-        }
+        },
+        clearCart: () => {
+            // set(defaultCart);
+            set({ cart: {}, numberOfItemsInStore: 0 });
+        },
     },
 }));
 
