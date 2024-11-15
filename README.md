@@ -29,6 +29,7 @@ Users can:
 - React - For UI Components
 - Tailwind CSS - For efficient, responsive styling
 - Zustand - Lightweight state management for React
+- Paystack - testing Payment integration
 
   
 ## Author
