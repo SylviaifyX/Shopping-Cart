@@ -29,10 +29,11 @@ Users can:
 - React - For UI Components
 - Tailwind CSS - For efficient, responsive styling
 - Zustand - Lightweight state management for React
+- Paystack - testing Payment integration
 
   
 ## Author
 - Name - Ifeoma Okpara Anumege
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@SylviaifyX](https://www.frontendmentor.io/profile/SylviaifyX)
 - Twitter - [@yourusername](https://www.twitter.com/yourusername)
 
