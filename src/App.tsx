@@ -1,11 +1,17 @@
 // import MainWrapper from "./layout/Wrapper"
+import { Route, Routes } from "react-router-dom"
 import HomePage from "./page/Home"
+import CartSection from "./layout/CartSection"
 
 function App() {
   return (
-      <div className=" flex flex-col min-h-screen bg-Rose50">
+    <Routes>
+      <Route path="/" element={<div className=" flex flex-col min-h-screen bg-Rose50">
         <HomePage />
-      </div>
+      </div>} >
+      </Route>
+      <Route path="/cart" element={<CartSection />} />
+    </Routes>
   )
 }
 

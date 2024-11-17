@@ -12,17 +12,14 @@ export type PaystackProp = {
 const CartTable = () => {
     const [paymentStatus, setPaymentStatus] = useState<string | null>(null)
     const cart = useCartStore((state) => state.cart);
-    const { subTotalCalculation, removeFromCart, clearCart } = useCartStore((state) => state.actions)
+    const { subTotalCalculation, removeFromCart} = useCartStore((state) => state.actions)
     const subtotal = subTotalCalculation()
 
     const handleRemoveItem = (id: string) => {
         removeFromCart(id)
     }
 
-    const reset = () =>{
-        clearCart()
-        setPaymentStatus(null)
-    }
+
 
     const paywithpaystack = (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,6 +29,7 @@ const CartTable = () => {
             amount: subtotal * 100,
             onSuccess: (transaction) => {
                 setPaymentStatus(`Payment complete! Reference: ${transaction.reference}`);
+                // clearCart()
             },
             onCancel: () => {
                 setPaymentStatus("Payment was cancelled.");
@@ -41,7 +39,7 @@ const CartTable = () => {
     };
 
     return (
-        <div className="w-full p-3">
+        <div id="cart" className="w-full p-3">
             <table className="">
                 <tbody className="flex flex-col gap-5">
                     {Object.keys(cart).map((id) => {
@@ -86,14 +84,6 @@ const CartTable = () => {
                 </button>
             </div>
 
-             {paymentStatus && (
-                <div className="mt-8 p-4 border border-gray-300 rounded-lg bg-gray-100 text-center">
-                    <p className="text-lg font-semibold text-Rose900">{paymentStatus}</p>
-                    <button className="mt-3 bg-Blue-500 text-white bg-Red p-2 rounded-md" onClick={reset}>
-                        Start New Order
-                    </button>
-                </div>
-            )}
         </div>
     );
 };

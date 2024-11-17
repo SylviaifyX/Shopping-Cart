@@ -1,5 +1,6 @@
 import CartTable from "../components/CartTable";
 import { useCartStore } from "../store/UseCartStore";
+import PaymentMethod from "./PaymethodCart";
 
 const CartSection = () => {
   const numberOfItemsInStore = useCartStore(state => state.numberOfItemsInStore)
@@ -14,7 +15,10 @@ const CartSection = () => {
           <img src="/illustration-empty-cart.svg" alt="remove-icon" className="w-24 h-24 mx-auto mb-5" />
           <p className="text-base font-RedHatText text-Rose500 font-semibold text-center  pb-3 ">Your added item would appear here</p>
         </div>
-         : <CartTable />}
+          : <>         
+            <CartTable />
+            <PaymentMethod/>
+          </>}
       </div>
     </section>
   );
