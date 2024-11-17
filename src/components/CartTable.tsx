@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { useCartStore } from "../store/UseCartStore";
 import { formatCurrency } from "../utilities/formatCurrency";
 import PaystackPop from "@paystack/inline-js"
@@ -9,10 +9,10 @@ export type PaystackProp = {
     onSuccess?: (transaction: { reference: string }) => void,
     onCancel?: () => void,
 }
-const CartTable = () => {
-    const [paymentStatus, setPaymentStatus] = useState<string | null>(null)
+const CartTable = ({setPaymentStatus}:{setPaymentStatus:React.Dispatch<React.SetStateAction<string | null>>}) => {
+    
     const cart = useCartStore((state) => state.cart);
-    const { subTotalCalculation, removeFromCart} = useCartStore((state) => state.actions)
+    const { subTotalCalculation, removeFromCart, clearCart} = useCartStore((state) => state.actions)
     const subtotal = subTotalCalculation()
 
     const handleRemoveItem = (id: string) => {
@@ -29,7 +29,7 @@ const CartTable = () => {
             amount: subtotal * 100,
             onSuccess: (transaction) => {
                 setPaymentStatus(`Payment complete! Reference: ${transaction.reference}`);
-                // clearCart()
+                clearCart()
             },
             onCancel: () => {
                 setPaymentStatus("Payment was cancelled.");
